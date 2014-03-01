@@ -1,0 +1,49 @@
+[
+    {
+        "name": "3rdpartyeve/phealng",
+        "version": "0.3.5",
+        "version_normalized": "0.3.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/3rdpartyeve/phealng.git",
+            "reference": "c545f91a9cd63ed5ecda1b80fdc189b468c40793"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/3rdpartyeve/phealng/zipball/c545f91a9cd63ed5ecda1b80fdc189b468c40793",
+            "reference": "c545f91a9cd63ed5ecda1b80fdc189b468c40793",
+            "shasum": ""
+        },
+        "time": "2014-02-13 14:09:13",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Pheal\\": "lib/Pheal/"
+            }
+        },
+        "notification-url": "http://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Peter Petermann",
+                "email": "ppetermann80@googlemail.com",
+                "homepage": "http://devedge.eu"
+            },
+            {
+                "name": "Wollari",
+                "homepage": "http://evemaps.dotlan.net/"
+            }
+        ],
+        "description": "PHP Eve Api Library, a simple PHP lib to access the EVE Online API",
+        "homepage": "https://github.com/3rdpartyeve/phealng",
+        "keywords": [
+            "EVE API",
+            "EVE Online",
+            "Pheal",
+            "PhealNG"
+        ]
+    }
+]
