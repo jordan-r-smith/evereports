@@ -2,23 +2,9 @@
 require_once 'functions.php';
 
 session_start();
+registerAccount();
 
 $msg = '';
-
-if (isset($_POST['submit']))
-{
-	$insert = getDb() -> prepare('INSERT INTO `user` (`id`, `email`, `password`) VALUES (?, ?, ?)');
-	$result = $insert -> execute(array($_POST['user_id'], $_POST['email'], $_POST['password']));
-
-	if ($result)
-	{
-		//$msg = "You have registered successfully!";
-		$_SESSION['logged_in'] = true;
-		$_SESSION['user_id'] = $_POST['user_id'];
-		unset($_POST);
-		header("Location: index.php");
-	}
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,17 +30,16 @@ if (isset($_POST['submit']))
 	</head>
 	<body>
 		<div id="wrapper">
-			<?php include 'templates/header.php'; ?>
-			<nav>
-				<a href="index.php">Login</a>
-				<a href="register.php">Register</a>
-			</nav>
-			<p>
-				Register for an account!
-			</p>
+			<?php
+			include 'templates/header.php';
+			include 'templates/nav_logged_false.php';
+			?>
 			<?php if (!empty($msg)): ?>
 			<h3><?php echo $msg; ?></h3>
 			<?php endif; ?>
+			<p>
+				Register for an account!
+			</p>
 			<form action="register.php" method="post" onsubmit="return validatePassword()" id="registration">
 				<label for="user_id">Username: </label><br />
 				<input type="text" name="user_id" id="user_id" required /><br />
@@ -64,7 +49,7 @@ if (isset($_POST['submit']))
 				<input type="password" name="password" id="password" required /><br />
 				<label for="confirm_password">Confirm Password: </label><br />
 				<input type="password" name="confirm_password" id="confirm_password" required /><br />
-				<input type="submit" name="submit" id="submit" />
+				<input type="submit" name="register" id="submit" />
 			</form>
 		</div>
 	</body>

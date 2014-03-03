@@ -1,7 +1,3 @@
-<nav>
-	<a href="index.php">Home</a>
-	<a href="register.php">Register</a>
-</nav>
 <?php if (!empty($msg)): ?>
 <h3><?php echo $msg; ?></h3>
 <?php endif; ?>
