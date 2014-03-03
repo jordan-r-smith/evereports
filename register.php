@@ -48,7 +48,7 @@ if (isset($_POST['submit']))
 				<h1><a href="index.php">EVE Reports</a></h1>
 			</header>
 			<nav>
-				<a href="login.php">Login</a>
+				<a href="index.php">Login</a>
 				<a href="register.php">Register</a>
 			</nav>
 			<p>
@@ -57,23 +57,15 @@ if (isset($_POST['submit']))
 			<?php if (!empty($msg)): ?>
 			<h3><?php echo $msg; ?></h3>
 			<?php endif; ?>
-			<form action="register.php" method="post" onsubmit="return validatePassword()">
-				Username:
-				<br />
-				<input type="text" name="user_id" required />
-				<br />
-				Email:
-				<br />
-				<input type="email" name="email" required />
-				<br />
-				Password:
-				<br />
-				<input type="password" name="password" id="password" required />
-				<br />
-				Confirm Password:
-				<br />
-				<input type="password" name="confirm_password" id="confirm_password" required />
-				<br />
+			<form action="register.php" method="post" onsubmit="return validatePassword()" id="registration">
+				<label for="user_id">Username: </label><br />
+				<input type="text" name="user_id" id="user_id" required /><br />
+				<label for="email">Email: </label><br />
+				<input type="email" name="email" id="email" required /><br />
+				<label for="password">Password: </label><br />
+				<input type="password" name="password" id="password" required /><br />
+				<label for="confirm_password">Confirm Password: </label><br />
+				<input type="password" name="confirm_password" id="confirm_password" required /><br />
 				<input type="submit" name="submit" id="submit" />
 			</form>
 		</div>

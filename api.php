@@ -3,6 +3,10 @@ require_once 'functions.php';
 require_once 'vendor/autoload.php';
 
 use Pheal\Pheal;
+use Pheal\Core\Config;
+
+Config::getInstance() -> cache = new \Pheal\Cache\FileStorage('.pheal/cache/');
+Config::getInstance() -> access = new \Pheal\Access\StaticCheck();
 
 session_start();
 
@@ -14,7 +18,7 @@ $good_pass = NULL;
 $logged_in = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 
 $msg = '';
-if (isset($_POST['login']))
+if (isset($_POST['logon']))
 {
 	$result = getDb() -> query('SELECT * FROM `user`');
 	while ($row = $result -> fetch(PDO::FETCH_ASSOC))
@@ -72,20 +76,18 @@ if (isset($_POST['add_api']))
 				<nav>
 					<a href="index.php">Home</a>
 					<a href="api.php">Add API</a>
+					<a href="characters.php">Characters</a>
 					<a href="logout.php">Logout</a>
 				</nav>
 				<?php if (!empty($msg)): ?>
 				<h3><?php echo $msg; ?></h3>
 				<?php endif; ?>
 				<p><a href="https://support.eveonline.com/api/Key/CreatePredefined/10/<?php //echo $id; ?>/false" target="_blank">Create new API key</a></p>
-				<form action="" method="post">
-					<input name="keyID" id="keyID" />
-					<label for="keyID">keyID</label>
-	
-					<input name="vCode" id="vCode" />
-					<label for="vCode">vCode</label>
-	
-					<br />
+				<form action="" method="post" id="addapi">
+					<label for="keyID">keyID: </label>
+					<input name="keyID" id="keyID" /><br />
+					<label for="vCode">vCode: </label>
+					<input name="vCode" id="vCode" /><br />
 					<input type="submit" name="add_api" id="submit">
 				</form>
 			<?php else: ?>
@@ -96,12 +98,12 @@ if (isset($_POST['add_api']))
 				<?php if (!empty($msg)): ?>
 				<h3><?php echo $msg; ?></h3>
 				<?php endif; ?>
-				<form action="" method="post">
-					Username: <br />
+				<form action="" method="post" id="login">
+					<label for="user_id">Username: </label>
 					<input type="text" name="user_id" id="user_id" required /><br />
-					Password: <br />
+					<label for="password">Password: </label>
 					<input type="password" name="password" id="password" required /><br />
-					<input type="submit" name="login" id="submit" />
+					<input type="submit" name="logon" id="submit" />
 				</form>
 			<?php endif; ?>
 		</div>
