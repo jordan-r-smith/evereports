@@ -43,47 +43,34 @@ if (isset($_POST['logon']))
 <html>
 	<head>
 		<title>EVE Reports</title>
-		<meta content="text/html; charset=UTF-8" /> 
+		<meta content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
 	<body>
 		<div id="wrapper">
 			<?php
 			include 'templates/header.php';
- ?>
-			<?php if ($good_user && $good_pass || $logged_in): ?>
-				<nav>
-					<a href="index.php">Home</a>
-					<a href="api.php">Add API</a>
-					<a href="characters.php">Characters</a>
-					<a href="logout.php">Logout</a>
-				</nav>
-				<p>
-					<?php
-					echo sprintf("Hello %s! EVE Online's server is currently %s. There are currently %s players online.", 
-						$_SESSION['user_id'], 
-						$response -> serverOpen ? '<em id="online">online</em>' : '<em id="offline">offline</em>', 
-						$response -> onlinePlayers);
-					?>
-				</p>
-				<p>
-					You can use this website to add multiple account APIs to track your EVE Online character stats.
-				</p>
+			?>
+			<?php if ($good_user && $good_pass || $logged_in):
+			?>
+			<nav>
+				<a href="index.php">Home</a>
+				<a href="api.php">Add API</a>
+				<a href="characters.php">Characters</a>
+				<a href="logout.php">Logout</a>
+			</nav>
+			<p>
+				<?php
+				echo sprintf("Hello %s! EVE Online's server is currently %s. There are currently %s players online.", $_SESSION['user_id'], $response -> serverOpen ? '<em id="online">online</em>' : '<em id="offline">offline</em>', $response -> onlinePlayers);
+				?>
+			</p>
+			<p>
+				You can use this website to add multiple account APIs to track your EVE Online character stats.
+			</p>
 			<?php else: ?>
-				<nav>
-					<a href="index.php">Home</a>
-					<a href="register.php">Register</a>
-				</nav>
-				<?php if (!empty($msg)): ?>
-				<h3><?php echo $msg; ?></h3>
-				<?php endif; ?>
-				<form action="" method="post" id="login">
-					<label for="user_id">Username: </label>
-					<input type="text" name="user_id" id="user_id" required /><br />
-					<label for="password">Password: </label>
-					<input type="password" name="password" id="password" required /><br />
-					<input type="submit" name="logon" id="submit" />
-				</form>
+			<?php
+			include 'templates/login.php';
+			?>
 			<?php endif; ?>
 		</div>
 	</body>

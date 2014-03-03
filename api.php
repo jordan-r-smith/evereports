@@ -54,7 +54,8 @@ if (isset($_POST['add_api']))
 		if ($result)
 		{
 			$msg = "API Added";
-		} else {
+		} else
+		{
 			$msg = "error";
 		}
 	}
@@ -69,7 +70,9 @@ if (isset($_POST['add_api']))
 	</head>
 	<body>
 		<div id="wrapper">
-			<?php include 'templates/header.php'; ?>
+			<?php
+			include 'templates/header.php';
+ 			?>
 			<?php if ($good_user && $good_pass || $logged_in): ?>
 				<nav>
 					<a href="index.php">Home</a>
@@ -89,20 +92,9 @@ if (isset($_POST['add_api']))
 					<input type="submit" name="add_api" id="submit">
 				</form>
 			<?php else: ?>
-				<nav>
-					<a href="index.php">Home</a>
-					<a href="register.php">Register</a>
-				</nav>
-				<?php if (!empty($msg)): ?>
-				<h3><?php echo $msg; ?></h3>
-				<?php endif; ?>
-				<form action="" method="post" id="login">
-					<label for="user_id">Username: </label>
-					<input type="text" name="user_id" id="user_id" required /><br />
-					<label for="password">Password: </label>
-					<input type="password" name="password" id="password" required /><br />
-					<input type="submit" name="logon" id="submit" />
-				</form>
+				<?php
+				include 'templates/login.php';
+				?>
 			<?php endif; ?>
 		</div>
 	</body>

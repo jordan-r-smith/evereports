@@ -60,3 +60,9 @@ a:visited {
 	padding: 10px;
 	margin: 0;
 }
+
+.col {
+	display: inline-block;
+	width: 350px;
+	vertical-align: top;
+}
