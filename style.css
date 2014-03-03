@@ -1,6 +1,15 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+	background-color: #1f1f1f;
+	font-family: 'Open Sans', sans-serif;
+}
+
 #wrapper {
-	margin: auto;
-	width: 1000px;
+	margin: 20px auto 0px auto;
+	padding: 1px 20px 15px 20px;
+	width: 950px;
+	background-color: #fff;
 }
 
 h1 a:link {
@@ -9,7 +18,14 @@ h1 a:link {
 }
 
 nav a:link {
+	padding: 2px;
 	color: #000000;
+	text-decoration: underline;
+}
+
+nav a:hover {
+	color: #000000;
+	background-color: #ddd;
 	text-decoration: underline;
 }
 
@@ -20,4 +36,27 @@ a:visited {
 .gallery {
 	width: 200px;
 	margin: 20px;
+}
+
+#online {
+	color: green;
+	font-style: normal;
+	font-weight: bold;
+}
+
+#offline {
+	color: red;
+	font-style: normal;
+	font-weight: bold;
+}
+.characterList {
+	padding: 0;
+	margin: 0;
+}
+
+.characterList li {
+	list-style: none;
+	display: inline-block;
+	padding: 10px;
+	margin: 0;
 }

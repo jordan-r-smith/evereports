@@ -48,9 +48,9 @@ if (isset($_POST['logon']))
 	</head>
 	<body>
 		<div id="wrapper">
-			<header>
-				<h1><a href="index.php">EVE Reports</a></h1>
-			</header>
+			<?php
+			include 'templates/header.php';
+ ?>
 			<?php if ($good_user && $good_pass || $logged_in): ?>
 				<nav>
 					<a href="index.php">Home</a>
@@ -60,8 +60,14 @@ if (isset($_POST['logon']))
 				</nav>
 				<p>
 					<?php
-					echo sprintf("Hello Visitor! The EVE Online Server is: %s!, current amount of online players: %s", $response -> serverOpen ? "open" : "closed", $response -> onlinePlayers);
+					echo sprintf("Hello %s! EVE Online's server is currently %s. There are currently %s players online.", 
+						$_SESSION['user_id'], 
+						$response -> serverOpen ? '<em id="online">online</em>' : '<em id="offline">offline</em>', 
+						$response -> onlinePlayers);
 					?>
+				</p>
+				<p>
+					You can use this website to add multiple account APIs to track your EVE Online character stats.
 				</p>
 			<?php else: ?>
 				<nav>

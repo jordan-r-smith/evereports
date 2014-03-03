@@ -69,9 +69,7 @@ if (isset($_POST['add_api']))
 	</head>
 	<body>
 		<div id="wrapper">
-			<header>
-				<h1><a href="index.php">EVE Reports</a></h1>
-			</header>
+			<?php include 'templates/header.php'; ?>
 			<?php if ($good_user && $good_pass || $logged_in): ?>
 				<nav>
 					<a href="index.php">Home</a>
@@ -82,7 +80,7 @@ if (isset($_POST['add_api']))
 				<?php if (!empty($msg)): ?>
 				<h3><?php echo $msg; ?></h3>
 				<?php endif; ?>
-				<p><a href="https://support.eveonline.com/api/Key/CreatePredefined/10/<?php //echo $id; ?>/false" target="_blank">Create new API key</a></p>
+				<p><a href="https://api.eveonline.com/" target="_blank">Create new API key</a></p>
 				<form action="" method="post" id="addapi">
 					<label for="keyID">keyID: </label>
 					<input name="keyID" id="keyID" /><br />

@@ -44,9 +44,7 @@ if (isset($_POST['submit']))
 	</head>
 	<body>
 		<div id="wrapper">
-			<header>
-				<h1><a href="index.php">EVE Reports</a></h1>
-			</header>
+			<?php include 'templates/header.php'; ?>
 			<nav>
 				<a href="index.php">Login</a>
 				<a href="register.php">Register</a>
