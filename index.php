@@ -23,15 +23,15 @@ $msg = '';
 	<body>
 		<div id="wrapper">
 			<?php
-			include 'templates/header.php';
-			if (isset($_SESSION['user_id'])):
-				include 'templates/nav_logged_true.php';
+include 'templates/header.php';
+if (isset($_SESSION['user_id'])):
+include 'templates/nav_logged_true.php';
 			?>
 			<p>
 				<?php
 				$pheal = new Pheal();
 				$response = $pheal -> serverScope -> ServerStatus();
-				echo sprintf("Hello %s! EVE Online's server is currently %s. There are currently %s players online.", $_SESSION['user_id'], $response -> serverOpen ? '<em id="online">online</em>' : '<em id="offline">offline</em>', $response -> onlinePlayers);
+				echo sprintf("Hello <strong>%s</strong>! EVE Online's server is currently %s. There are currently <strong>%s</strong> players online.", $_SESSION['user_id'], $response -> serverOpen ? '<em id="online">online</em>' : '<em id="offline">offline</em>', number_format($response -> onlinePlayers));
 				?>
 			</p>
 			<p>
@@ -40,7 +40,8 @@ $msg = '';
 			<?php else:
 				include 'templates/nav_logged_false.php';
 				include 'templates/login.php';
-			endif; ?>
+				endif;
+			?>
 		</div>
 	</body>
 </html>

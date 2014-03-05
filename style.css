@@ -6,8 +6,8 @@ body {
 }
 
 #wrapper {
-	margin: 20px auto 0px auto;
-	padding: 1px 20px 15px 20px;
+	margin: 0px auto;
+	padding: 20px;
 	width: 950px;
 	background-color: #fff;
 }
@@ -15,6 +15,10 @@ body {
 h1 a:link {
 	color: #000000;
 	text-decoration: none;
+}
+
+nav {
+	padding: 15px 0;
 }
 
 nav a:link {
