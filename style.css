@@ -1,57 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 body {
-	background-color: #1f1f1f;
-	font-family: 'Open Sans', sans-serif;
-}
-
-#wrapper {
-	margin: 0px auto;
-	padding: 20px;
-	width: 950px;
-	background-color: #fff;
-}
-
-h1 a:link {
-	color: #000000;
-	text-decoration: none;
-}
-
-nav {
-	padding: 15px 0;
-}
-
-nav a:link {
-	padding: 2px;
-	color: #000000;
-	text-decoration: underline;
-}
-
-nav a:hover {
-	color: #000000;
-	background-color: #ddd;
-	text-decoration: underline;
-}
-
-a:visited {
-	color: #000000;
+	padding-top: 50px;
+	padding-bottom: 20px;
 }
 
 .gallery {
 	width: 200px;
 	margin: 20px;
-}
-
-#online {
-	color: green;
-	font-style: normal;
-	font-weight: bold;
-}
-
-#offline {
-	color: red;
-	font-style: normal;
-	font-weight: bold;
 }
 .characterList {
 	padding: 0;

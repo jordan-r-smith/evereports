@@ -20,7 +20,6 @@ function logOn()
 			{
 				$_SESSION['user_id'] = $row['id'];
 				$msg = "Successfully logged in.";
-				unset($_POST);
 			} else
 			{
 				$msg = "Incorrect username or password.";
