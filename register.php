@@ -16,8 +16,8 @@ $msg = '';
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<link href="dist/css/darkly.min.css" rel="stylesheet">
-		<link href="style.css" rel="stylesheet">
+		<link href="assets/css/darkly.min.css" rel="stylesheet">
+		<link href="assets/css/custom.style.css" rel="stylesheet">
 	</head>
 	<body>
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -47,7 +47,7 @@ $msg = '';
 		<div class="jumbotron">
 			<div class="container">
 				<header>
-					<a href="index.php"><img src="i/banner.jpg" class="img-responsive" alt="EVE Reports" /></a>
+					<a href="index.php"><img src="assets/img/banner.jpg" class="img-responsive" alt="EVE Reports" /></a>
 				</header>
 			</div>
 		</div>
@@ -109,10 +109,10 @@ $msg = '';
 			</footer>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="dist/js/bootstrap.min.js"></script>
-		<script src="dist/js/jquery.validate.min.js"></script>
-		<script src="dist/js/additional-methods.min.js"></script>
-		<script src="dist/js/jquery-validate.bootstrap-tooltip.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/jquery.validate.min.js"></script>
+		<script src="assets/js/additional-methods.min.js"></script>
+		<script src="assets/js/jquery-validate.bootstrap-tooltip.min.js"></script>
 		<script>
 			$('#registration').validate({
 				rules : {

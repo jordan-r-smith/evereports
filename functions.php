@@ -1,13 +1,5 @@
 <?php
-function getDb()
-{
-	static $db;
-	if (!$db)
-	{
-		$db = new PDO('mysql:host=localhost;dbname=evereports', 'root', '');
-	}
-	return $db;
-}
+require_once 'config.php';
 
 function logOn()
 {
