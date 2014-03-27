@@ -57,7 +57,7 @@ $msg = '';
 			?>
 			<div class="row">
 				<div class="col-md-7">
-					<h2>What is an API key?</h2>
+					<h2>Why should you register?</h2>
 					<p>
 						The API key is a private code that identifies your account. Combined with your user ID, this key allows
 						third party programs and web sites to access information about your characters and corporations. Using
