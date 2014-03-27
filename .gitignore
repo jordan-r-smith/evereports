@@ -1,0 +1,21 @@
+# config
+config.php
+
+# IDE/Editor temporary files
+*~
+*.swp
+*.bak
+.buildpath
+.cache
+.project
+.settings
+.DS_Store
+Thumbs.db
+
+# composer files
+/vendor
+composer.phar
+composer.lock
+
+# IIS7 
+web.config
