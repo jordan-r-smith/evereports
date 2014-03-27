@@ -44,3 +44,8 @@
 	}
 	?>
 </ul>
+<ul class="nav navbar-nav navbar-right">
+	<li>
+		<a href="logout.php">Logout(<?php echo $_SESSION['user_id'] ?>) <b class="glyphicon glyphicon-user"></b></a>
+	</li>
+</ul>

@@ -23,6 +23,7 @@ $response = $pheal -> serverScope -> ServerStatus();
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
+		
 		<link href="dist/css/darkly.min.css" rel="stylesheet">
 		<link href="style.css" rel="stylesheet">
 	</head>
@@ -40,30 +41,14 @@ $response = $pheal -> serverScope -> ServerStatus();
 				</div>
 				<div class="navbar-collapse collapse navbar-responsive-collapse">
 					<?php
-					if (isset($_SESSION['user_id'])):
-					include 'templates/nav_logged_true.php';
-					?>
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="logout.php">Logout <b class="glyphicon glyphicon-user"></b></a>
-						</li>
-					</ul>
-					<?php else:
+					if (isset($_SESSION['user_id']))
+					{
+						include 'templates/nav_logged_true.php';
+					} else
+					{
 						include 'templates/nav_logged_false.php';
+					}
 					?>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
-							<ul class="dropdown-menu" style="padding: 10px; background-color: #375a7f;">
-								<li>
-									<?php
-									include 'templates/login_form.php';
-									?>
-								</li>
-							</ul>
-						</li>
-					</ul>
-					<?php endif; ?>
 				</div>
 			</nav>
 		</div>
@@ -88,19 +73,21 @@ $response = $pheal -> serverScope -> ServerStatus();
 						There will also be wallet, asset, mail, and market tracking at some point.
 					</p>
 				</div>
-				<div class="col-md-3 well">
-					<h3>EVE Server Status</h3>
-					<p>
-						<?php
-						echo sprintf("Tranquility: %s", $response -> serverOpen ? '<em class="text-success">Online</em>' : '<em class="text-danger">Offline</em>');
-						?>
-					</p>
-					<h3>Player Count</h3>
-					<p>
-						<?php 
-						echo sprintf("Current Pilots: <em class='text-info'>%s</em>", number_format($response -> onlinePlayers)); 
-						?>
-					</p>
+				<div class="col-md-4">
+					<div class="well">
+						<h3>EVE Server Status</h3>
+						<p>
+							<?php
+							echo sprintf("Tranquility: %s", $response -> serverOpen ? '<em class="text-success">Online</em>' : '<em class="text-danger">Offline</em>');
+							?>
+						</p>
+						<h3>Player Count</h3>
+						<p>
+							<?php
+							echo sprintf("Current Pilots: <em class='text-info'>%s</em>", number_format($response -> onlinePlayers));
+							?>
+						</p>
+					</div>
 				</div>
 			</div>
 			<hr/>

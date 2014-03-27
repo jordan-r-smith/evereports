@@ -19,6 +19,7 @@ logOn();
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
+		
 		<link href="dist/css/darkly.min.css" rel="stylesheet">
 		<link href="style.css" rel="stylesheet">
 	</head>
@@ -36,30 +37,14 @@ logOn();
 				</div>
 				<div class="navbar-collapse collapse navbar-responsive-collapse">
 					<?php
-					if (isset($_SESSION['user_id'])):
-					include 'templates/nav_logged_true.php';
-					?>
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="logout.php">Logout <b class="glyphicon glyphicon-user"></b></a>
-						</li>
-					</ul>
-					<?php else:
+					if (isset($_SESSION['user_id']))
+					{
+						include 'templates/nav_logged_true.php';
+					} else
+					{
 						include 'templates/nav_logged_false.php';
+					}
 					?>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
-							<ul class="dropdown-menu" style="padding: 10px; background-color: #375a7f;">
-								<li>
-									<?php
-									include 'templates/login_form.php';
-									?>
-								</li>
-							</ul>
-						</li>
-					</ul>
-					<?php endif; ?>
 				</div>
 			</nav>
 		</div>
@@ -81,7 +66,7 @@ logOn();
 				while ($row = $query -> fetch(PDO::FETCH_ASSOC))
 				{
 				?>
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<div class="panel panel-default">
 						<?php
 						echo sprintf("<p class='panel-heading'>API ID %s:</p>", $row['keyID']);
@@ -90,12 +75,12 @@ logOn();
 							$request = new Pheal($row['keyID'], $row['vCode'], 'account');
 							$request -> detectAccess();
 							$char_list = $request -> Characters();
-							echo "<ul class='characterList panel-body'>";
+							echo "<ul class='characterList panel-body text-center'>";
 							foreach ($char_list->characters as $character)
 							{
 								echo sprintf("
 									<li>
-										<a href='display.php?charID=%s&amp;keyID=%s' role='button' class='btn btn-default btn-sm' data-toggle='tooltip' title='%s'>
+										<a href='display.php?charID=%s&amp;keyID=%s' role='button' class='thumbnail' data-toggle='tooltip' title='%s'>
 											<img src='http://image.eveonline.com/Character/%s_128.jpg' alt='%s' />
 										</a>
 									</li>", $character -> characterID, $row['keyID'], $character -> name, $character -> characterID, $character -> name);
@@ -127,7 +112,7 @@ logOn();
 		<script src="dist/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			$('[data-toggle="tooltip"]').tooltip({
-				'placement' : 'right'
+				'placement' : 'bottom'
 			});	
 		</script>
 	</body>

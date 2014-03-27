@@ -11,6 +11,10 @@ Config::getInstance() -> access = new \Pheal\Access\StaticCheck();
 session_start();
 logOn();
 addAPI();
+
+//var_dump($_POST);
+
+//$msg = '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +24,7 @@ addAPI();
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
+		
 		<link href="dist/css/darkly.min.css" rel="stylesheet">
 		<link href="style.css" rel="stylesheet">
 	</head>
@@ -37,30 +42,14 @@ addAPI();
 				</div>
 				<div class="navbar-collapse collapse navbar-responsive-collapse">
 					<?php
-					if (isset($_SESSION['user_id'])):
-					include 'templates/nav_logged_true.php';
-					?>
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="logout.php">Logout <b class="glyphicon glyphicon-user"></b></a>
-						</li>
-					</ul>
-					<?php else:
+					if (isset($_SESSION['user_id']))
+					{
+						include 'templates/nav_logged_true.php';
+					} else
+					{
 						include 'templates/nav_logged_false.php';
+					}
 					?>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
-							<ul class="dropdown-menu" style="padding: 10px; background-color: #375a7f;">
-								<li>
-									<?php
-									include 'templates/login_form.php';
-									?>
-								</li>
-							</ul>
-						</li>
-					</ul>
-					<?php endif; ?>
 				</div>
 			</nav>
 		</div>
@@ -76,7 +65,7 @@ addAPI();
 			if (isset($_SESSION['user_id'])):
 			?>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-7">
 					<h2>What is an API key?</h2>
 					<p>
 						The API key is a private code that identifies your account. Combined with your user ID, this key allows
@@ -85,26 +74,29 @@ addAPI();
 						exports, skill training notifications, and other tools.
 					</p>
 					<div class="well">
-						<a href="https://api.eveonline.com/" target="_blank">
-							Create new API key
-						</a>
+						<a href="https://api.eveonline.com/" target="_blank"> Create new API key </a>
 					</div>
 				</div>
-				<div class="col-md-5 well">
-					<h3>Add an API key</h3>
-					<form action="" method="post" id="addapi" class="form-horizontal" role="form">
-						<div class="form-group" style="margin: 10px;">
-							<label for="keyID">keyID: </label>
-							<input type="text" placeholder="keyID" class="form-control input-sm" name="keyID" id="keyID" required/>
-						</div>
-						<div class="form-group" style="margin: 10px;">
-							<label for="vCode">vCode: </label>
-							<input type="text" placeholder="vCode" class="form-control input-sm" name="vCode" id="vCode" required />
-						</div>
-						<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="add_api" id="submit">
-						Add API
-						</button>
-					</form>
+				<div class="col-md-5">
+					<div class="well">
+						<h3>Add an API key</h3>
+						<form action="" method="post" id="addapi" class="form-horizontal" role="form">
+							<div class="form-group" style="margin: 10px;">
+								<label for="keyID">keyID: </label>
+								<input type="text" placeholder="keyID" class="form-control input-sm" name="keyID" id="keyID" required/>
+							</div>
+							<div class="form-group" style="margin: 10px;">
+								<label for="vCode">vCode: </label>
+								<input type="text" placeholder="vCode" class="form-control input-sm" name="vCode" id="vCode" required />
+							</div>
+							<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="add_api" id="add_api">
+								Add API
+							</button>
+						</form>
+						<?php if (!empty($msg)): ?>
+						<h3><?php echo $msg; ?></h3>
+						<?php endif; ?>
+					</div>
 				</div>
 			</div>
 			<?php else:
