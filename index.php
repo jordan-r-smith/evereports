@@ -5,7 +5,7 @@ require_once 'vendor/autoload.php';
 use Pheal\Pheal;
 use Pheal\Core\Config;
 
-Config::getInstance() -> cache = new \Pheal\Cache\FileStorage('.pheal/cache/');
+Config::getInstance() -> cache = new \Pheal\Cache\FileStorage('cache/');
 Config::getInstance() -> access = new \Pheal\Access\StaticCheck();
 
 session_start();

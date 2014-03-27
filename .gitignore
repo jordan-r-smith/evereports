@@ -1,9 +1,6 @@
 # config
 config.php
 
-# cache files
-.pheal/cache
-
 # IDE/Editor temporary files
 *~
 *.swp
