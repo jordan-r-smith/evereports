@@ -10,6 +10,11 @@ Profile Viewer/Tool for EVE Online
 4. Open terminal and type `composer install` in the `c:\wamp\www\evereports` directory
 5. Open a browser and go to `localhost/evereports/` in the url bar
 
+##Configuration
+1. Rename config_blank.php to config.php
+2. Configure the variables ($host, $dbname, $username, $password) with your MySQL information
+3. In the database you have created... (will finish this later).
+
 ##TODO
 
 - Input validation
