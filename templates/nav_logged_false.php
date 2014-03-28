@@ -37,7 +37,7 @@
 					<div class="form-group" style="margin: 10px;">
 						<input type="password" placeholder="Password" class="form-control input-sm" name="password" id="password" required />
 					</div>
-					<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="logon" id="logon" />
+					<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="logon" id="logon">
 					Sign in
 					</button>
 				</form>

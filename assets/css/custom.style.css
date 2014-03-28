@@ -1,8 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
-body {
-	padding-top: 50px;
-	padding-bottom: 20px;
+.navbar {
+    margin-bottom: 0 !important;
+}
+
+.thumbnail {
+	display: inline-block !important;
 }
 
 .gallery {
