@@ -20,7 +20,7 @@ logOn();
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		
+
 		<link href="assets/css/darkly.min.css" rel="stylesheet">
 		<link href="assets/css/custom.style.css" rel="stylesheet">
 	</head>
@@ -58,38 +58,52 @@ logOn();
 		</div>
 		<div class="container">
 			<?php
-			if (isset($_SESSION['user_id'])) {
-				if (!empty($_GET['charID'])){
+			if (isset($_SESSION['user_id']))
+			{
+				if (!empty($_GET['charID']))
+				{
 					$query = getDb() -> prepare('SELECT * FROM `api` WHERE `keyID` = ?');
 					$query -> execute(array($_GET['keyID']));
-					
+
 					while ($row = $query -> fetch(PDO::FETCH_ASSOC))
 					{
 						try
 						{
-							$request = new Pheal($row['keyID'], $row['vCode'], 'char');
-							$request -> detectAccess();
-							
-							$arguments = array('characterID' => $_GET['charID']);
-							$charSheet = $request -> CharacterSheet($arguments);
-							
+							# CharacterSheet API Function
+							$charRequest = new Pheal($row['keyID'], $row['vCode'], 'char');
+							$charRequest -> detectAccess();
+
+							$charArguments = array('characterID' => $_GET['charID']);
+							$charSheet = $charRequest -> CharacterSheet($charArguments);
+
 							$skills = $charSheet;
-							$skills = $skills->skills->toArray();
-							
+							$skills = $skills -> skills -> toArray();
+
 							$totalSP = 0;
 							foreach ($skills as $skill)
 							{
 								$skillPoints = $skill['skillpoints'];
 								$totalSP = $totalSP + $skillPoints;
 							}
-							
-							$data = $charSheet -> toArray();
-							
-							if (isset($data['result'])) {
-								$data = $data['result'];
+
+							$charSheetData = $charSheet -> toArray();
+							if (isset($charSheetData['result']))
+							{
+								$charSheetData = $charSheetData['result'];
 							}
-							
+
 							$id = (int)$_GET['charID'];
+
+							# CharacterInfo API Function
+							$eveRequest = new Pheal($row['keyID'], $row['vCode'], 'eve');
+							$eveRequest -> detectAccess();
+							
+							$charInfo = $eveRequest -> CharacterInfo($charArguments);
+							$charInfoData = $charInfo -> toArray();
+							if (isset($charInfoData['result']))
+							{
+								$charInfoData = $charInfoData['result'];
+							}
 						} catch (\Pheal\Exceptions\PhealException $e)
 						{
 							echo sprintf("Error: %s Message: %s", get_class($e), $e -> getMessage());
@@ -107,7 +121,6 @@ logOn();
 				</p>
 			</footer>
 		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
+		<?php require_once 'templates/footer_scripts.php'; ?>
 	</body>
 </html>

@@ -27,7 +27,7 @@
 </ul>
 <ul class="nav navbar-nav navbar-right">
 	<li class="dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Log in <b class="caret"></b></a>
 		<ul class="dropdown-menu" style="padding: 10px; min-width: 300px; background-color: #375a7f;">
 			<li>
 				<form action="" method="post" id="login" class="form-horizontal" role="form">
@@ -37,8 +37,15 @@
 					<div class="form-group" style="margin: 10px;">
 						<input type="password" placeholder="Password" class="form-control input-sm" name="password" id="password" required />
 					</div>
+					<div class="form-group" style="margin: 10px;">
+						<input type="checkbox" class="checkbox-inline" name="remember" id="remember" value="Remember" />
+						<label for="remember">Keep me logged in</label>
+					</div>
 					<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="logon" id="logon">
 					Sign in
+					</button>
+					<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="logon" id="logon">
+					Forgot Username/Password
 					</button>
 				</form>
 			</li>

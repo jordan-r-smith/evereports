@@ -1,8 +1,8 @@
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-10 col-md-offset-1">
 		<div class="well">
 			<h2>Skills</h2>
-			<table>
+			<table class="table table-bordered table-condensed table-striped">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -23,9 +23,9 @@
 						$skillLevel = $skill['level'];
 					?>
 					<tr>
-						<td><?php echo $skillName; ?></td>
-						<td><?php echo $skillPoints; ?></td>
-						<td><?php echo $skillLevel; ?></td>
+						<td><?= $skillName; ?></td>
+						<td><?= $skillPoints; ?></td>
+						<td><?= $skillLevel; ?></td>
 					</tr>
 					<?php
 					}

@@ -68,15 +68,28 @@ logOn();
 				?>
 				<div class="col-md-6">
 					<div class="panel panel-default">
+						<div class="panel-heading">
+					        <div class="dropdown pull-right">
+					            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					            	<span class="glyphicon glyphicon-wrench"></span>
+					            </a>
+					            <ul class="dropdown-menu" role="menu">
+					                <li><a href="#">Modify</a></li>
+					                <li><a href="#">Delete</a></li>
+					            </ul>
+					        </div>
+					        <h3 class="panel-title">API ID <?= $row['keyID'] ?>:</h3>
+					    </div>
 						<?php
-						echo sprintf("<p class='panel-heading'>API ID %s:</p>", $row['keyID']);
 						try
 						{
-							$request = new Pheal($row['keyID'], $row['vCode'], 'account');
-							$request -> detectAccess();
-							$char_list = $request -> Characters();
-							echo "<ul class='characterList panel-body text-center'>";
-							foreach ($char_list->characters as $character)
+							$accountRequest = new Pheal($row['keyID'], $row['vCode'], 'account');
+							$accountRequest -> detectAccess();
+							$characterList = $accountRequest -> Characters();
+						?>
+						<ul class="characterList panel-body text-center">
+						<?php
+							foreach ($characterList->characters as $character)
 							{
 								echo sprintf("
 									<li>
@@ -85,7 +98,9 @@ logOn();
 										</a>
 									</li>", $character -> characterID, $row['keyID'], $character -> name, $character -> characterID, $character -> name);
 							}
-							echo "</ul>";
+						?>
+						</ul>
+						<?php
 						} catch (\Pheal\Exceptions\PhealException $e)
 						{
 							echo sprintf("Error: %s Message: %s", get_class($e), $e -> getMessage());
@@ -108,8 +123,7 @@ logOn();
 				</p>
 			</footer>
 		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
+		<?php require_once 'templates/footer_scripts.php'; ?>
 		<script type="text/javascript">
 			$('[data-toggle="tooltip"]').tooltip({
 				'placement' : 'bottom'

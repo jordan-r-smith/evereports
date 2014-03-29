@@ -108,58 +108,6 @@ $msg = '';
 				</p>
 			</footer>
 		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/jquery.validate.min.js"></script>
-		<script src="assets/js/additional-methods.min.js"></script>
-		<script src="assets/js/jquery-validate.bootstrap-tooltip.min.js"></script>
-		<script>
-			$('#registration').validate({
-				rules : {
-					user_id : {
-						required : true,
-						minlength : 5
-					},
-					email : {
-						required : true,
-						email : true
-					},
-					reg_password : {
-						required : true,
-						minlength : 5
-					},
-					confirm_password : {
-						required : true,
-						minlength : 5,
-						equalTo : "#reg_password"
-					},
-				},
-				messages : {
-					reg_password : {
-						required : "Please provide a password",
-						minlength : "Your password must be at least 5 characters long!"
-					},
-					confirm_password : {
-						required : "Please provide a password",
-						minlength : "Your password must be at least 5 characters long",
-						equalTo : "Please enter the same password as above"
-					}
-				},
-				tooltip_options: {
-	    			user_id: { 
-	    				placement: 'top'
-	    			},
-	    			email: { 
-	    				placement: 'top'
-	    			},
-	    			reg_password: { 
-	    				placement: 'top'
-	    			},
-	    			confirm_password: { 
-	    				placement: 'top'
-	    			}
-	        	}
-			});
-		</script>
+		<?php require_once 'templates/footer_scripts.php'; ?>
 	</body>
 </html>
