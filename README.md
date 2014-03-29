@@ -17,11 +17,10 @@ Profile Viewer/Tool for EVE Online
 
 ##TODO
 
-- Input validation
-- Secure password/API credentials
-- Dynamic skill display
-- Fluid layout (mobile display) / bootstrap
-- Mail reading
-- Assets viewer
-- Kill reports
 - Framework integration
+- Secure credentials
+- Skill groups
+- Skill queue
+- View assets
+- Read mail
+- Kill reports
