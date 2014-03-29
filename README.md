@@ -17,6 +17,7 @@ Profile Viewer/Tool for EVE Online
 
 ##TODO
 
+- API access exceptions
 - Framework integration
 - Secure credentials
 - Skill groups
