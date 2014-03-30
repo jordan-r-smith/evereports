@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<div class="label label-default" id="collapse-init">
-			Collapse all groups <span class="glyphicon glyphicon-resize-small"></span>
+			Expand all groups <span class="glyphicon glyphicon-resize-full"></span>
 		</div>
 		<div class="panel-group" id="accordion">
 			<?php
@@ -54,10 +54,10 @@
 					<div class="panel panel-primary">
 						<div class="panel-heading" data-toggle="collapse" data-target="#collapse<?= $groupNameClass ?>">
 							<h3 class="panel-title">
-								<?= $group['groupName'] ?>
+								<span class="glyphicon glyphicon-th-list"></span> &nbsp; <?= $group['groupName'] ?> <small><?= count($skillsInGroup); ?> Skills</small>
 							</h3>
 						</div>
-						<div id="collapse<?= $groupNameClass ?>" class="panel-collapse collapse">
+						<div id="collapse<?= $groupNameClass ?>" class="panel-collapse collapse in">
 							<div class="panel-body">
 								<table class="table table-bordered table-condensed table-striped">
 									<?php
@@ -68,8 +68,8 @@
 									?>
 										<tr>
 											<td><?= $skillName; ?></td>
-											<td><?= $skillPoints; ?></td>
-											<td><?= $skillLevel; ?></td>
+											<td width="150px"><em><?= number_format($skillPoints); ?> SP</em></td>
+											<td align="right" width="100px"><img src="assets/img/level<?= $skillLevel; ?>.jpg" /></td>
 										</tr>
 									<?php
 											endforeach;

@@ -1,7 +1,7 @@
 $('.collapse').collapse();
 
 $(function () {
-    var active = false;
+    var active = true;
 
     $('#collapse-init').click(function () {
         if (active) {
