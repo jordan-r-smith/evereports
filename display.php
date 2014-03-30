@@ -36,7 +36,7 @@ logOn();
 					</button>
 					<a class="navbar-brand" href="">EVE Reports</a>
 				</div>
-				<div class="navbar-collapse collapse navbar-responsive-collapse">
+				<div class="navbar-collapse collapse in navbar-responsive-collapse">
 					<?php
 					if (isset($_SESSION['user_id']))
 					{

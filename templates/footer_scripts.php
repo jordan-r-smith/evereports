@@ -3,3 +3,4 @@
 <script src="assets/js/jquery.validate.min.js"></script>
 <script src="assets/js/jquery-validate.bootstrap-tooltip.min.js"></script>
 <script src="assets/js/form.validate.js"></script>
+<script src="assets/js/collapse.js"></script>
