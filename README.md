@@ -20,7 +20,7 @@ Profile Viewer/Tool for EVE Online
 - API access exceptions
 - Framework integration
 - Secure credentials
-- Skill groups
+- Account/API update
 - Skill queue
 - View assets
 - Read mail
