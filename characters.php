@@ -74,8 +74,17 @@ logOn();
 					            	<span class="glyphicon glyphicon-wrench"></span>
 					            </a>
 					            <ul class="dropdown-menu" role="menu">
-					                <li><a href="#">Modify</a></li>
-					                <li><a href="#">Delete</a></li>
+					                <li><a href="">Modify</a></li>
+					                <li>
+					                	<a href="" id="delete"
+					                		data-toggle="modal" 
+					                		data-target="#confirmDelete" 
+					                		data-title="Delete User" 
+					                		data-message="Are you sure you want to delete this user ?"
+					                		data-url="deleteAPI.php?keyID=<?= $row['keyID'] ?>">
+					                		Delete
+					                	</a>
+					                </li>
 					            </ul>
 					        </div>
 					        <h3 class="panel-title">API ID <?= $row['keyID'] ?>:</h3>
@@ -129,5 +138,6 @@ logOn();
 				'placement' : 'bottom'
 			});	
 		</script>
+		<?php require_once('templates/delete_confirm.php'); ?>
 	</body>
 </html>

@@ -12,7 +12,7 @@
 				$groupList = $selectGroup -> fetchAll(PDO::FETCH_ASSOC);
 				asort($groupList);
 			} catch (PDOException $e) {
-				echo $e;
+				echo "";
 			}
 			
 			# Create a table of the character's skills for each skill group
@@ -82,7 +82,6 @@
 						endif;
 						endforeach;
 			?>
-		</div>
 		</div>
 	</div>
 </div>
