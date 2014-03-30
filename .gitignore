@@ -11,11 +11,13 @@ config.php
 .settings
 .DS_Store
 Thumbs.db
+.env.local.php
+.env.php
+
+# bootstrap
+/bootstrap/compiled.php
 
 # composer files
 /vendor
 composer.phar
 composer.lock
-
-# IIS7 
-web.config
