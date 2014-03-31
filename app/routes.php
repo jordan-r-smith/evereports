@@ -11,7 +11,7 @@
  |
  */
 
-Route::get('/', 'PhealController@serverStatus');
+Route::get('/', array('as' => 'home', 'uses' => 'PhealController@serverStatus'));
 
 Route::get('/register', function()
 {

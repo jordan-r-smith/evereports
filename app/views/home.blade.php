@@ -7,7 +7,7 @@
 		{{ HTML::navLink("/", 'Home' ) }}
 	</li>
 	<li>
-		{{ HTML::navLink("/register", 'Register' ) }}
+		{{ HTML::navLink("register", 'Register' ) }}
 	</li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -68,7 +68,7 @@
 			</p>
 			<h3>Player Count</h3>
 			<p>
-				Current Pilots: <em class='text-info'>{{ number_format($serverStatus -> onlinePlayers) }}</em>
+				Current Pilots: <em class='text-info'>{{{ number_format($serverStatus -> onlinePlayers) }}}</em>
 			</p>
 		</div>
 	</div>

@@ -42,9 +42,7 @@
 
 @section('content')
 
-<?php
-if (!isset($_SESSION['user_id'])):
-?>
+@if (!isset($_SESSION['user_id']))
 <div class="row">
 	<div class="col-md-7">
 		<h2>Why should you register?</h2>
@@ -79,17 +77,14 @@ if (!isset($_SESSION['user_id'])):
 					Register
 				</button>
 			</form>
-			<?php if (!empty($msg)):
-			?>
-			<h3><?php echo $msg; ?><
-			/h3>
-			<?php endif; ?>
+			@if (!empty($msg))
+				<h3>{{{ $msg }}}</h3>
+			@endif
 		</div>
 	</div>
 </div>
-<?php else:
-	header("Location: index.php");
-	endif;
-?>
+@else
+	Redirect::route('home');
+@endif
 
 @stop
