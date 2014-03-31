@@ -1,5 +1,5 @@
 # config
-# /app/config/database.php
+/app/config/database.php
 
 # IDE/Editor temporary files
 *~
