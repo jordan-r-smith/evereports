@@ -1,0 +1,8 @@
+[31-Mar-2014 00:10:59 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(functions.php): failed to open stream: No such file or directory' in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/babf55facd1b2ffb2260898aad7747ff:2
+Stack trace:
+#0 /home3/everepor/public_html/school/softdev/evereports/app/storage/views/babf55facd1b2ffb2260898aad7747ff(2): Illuminate\Exception\Handler->handleError(2, 'require_once(fu...', '/home3/everepor...', 2, Array)
+#1 /home3/everepor/public_html/school/softdev/evereports/app/storage/views/babf55facd1b2ffb2260898aad7747ff(2): require_once()
+#2 /home3/everepor/public_html/school/softdev/evereports/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(37): include('/home3/everepor...')
+#3 /home3/everepor/public_html/school/softdev/evereports/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(56): Illuminate\View\Engines\PhpEngine->evaluatePath('/home3/everepor...', Array)
+#4 /home3/everepor/public_html/school/softdev/evereports/vendor/ in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/babf55facd1b2ffb2260898aad7747ff on line 2
+[31-Mar-2014 00:10:59 UTC] PHP Fatal error:  main(): Failed opening required 'functions.php' (include_path='/home3/everepor/public_html/school/softdev/evereports/vendor/phpseclib/phpseclib/phpseclib:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/babf55facd1b2ffb2260898aad7747ff on line 2
