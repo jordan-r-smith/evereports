@@ -1,73 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>EVE Reports</title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<meta name="author" content="">
-		
-		<link href="assets/css/darkly.min.css" rel="stylesheet">
-		<link href="assets/css/custom.style.css" rel="stylesheet">
-	</head>
-	<body>
-		<div class="navbar navbar-default navbar-static-top" role="navigation">
-			<nav class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="">EVE Reports</a>
-				</div>
-				<div class="navbar-collapse collapse navbar-responsive-collapse">
+@extends('master')
 
-				</div>
-			</nav>
-		</div>
-		<div class="jumbotron">
-			<div class="container">
-				<header>
-					<a href="index.php"><img src="assets/img/banner.jpg" class="img-responsive" alt="EVE Reports" /></a>
-				</header>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
-					<h2>What is EVE Reports?</h2>
-					<p>
-						EVE Reports is a tool that you can use to view and access your Characters' information from anywhere.  EVE Reports
-						currently allows you to view your Character Sheet for any character of an account you add to your profile via the EVE API.
-					</p>
-					<h2>The Future</h2>
-					<p>
-						Eventually, a personal killboard is going to be implemented so that you can view and share your personal kills and losses online.
-						There will also be wallet, asset, mail, and market tracking at some point.
-					</p>
-				</div>
-				<div class="col-md-4">
-					<div class="well">
-						<h3>EVE Server Status</h3>
-						<p>
-							
-						</p>
-						<h3>Player Count</h3>
-						<p>
-							
-						</p>
+@section('navigation')
+
+<ul class="nav navbar-nav">
+	<li>
+		{{ HTML::navLink("/", 'Home' ) }}
+	</li>
+	<li>
+		{{ HTML::navLink("/register", 'Register' ) }}
+	</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Log in <b class="caret"></b></a>
+		<ul class="dropdown-menu" style="padding: 10px; min-width: 300px; background-color: #375a7f;">
+			<li>
+				<form action="" method="post" id="login" class="form-horizontal" role="form">
+					<div class="form-group" style="margin: 10px;">
+						<input type="text" placeholder="Username" class="form-control input-sm" name="user_id" id="user_id" required />
 					</div>
-				</div>
-			</div>
-			<hr/>
-			<footer>
-				<p>
-					&copy; EVEReports.com 2014
-				</p>
-			</footer>
+					<div class="form-group" style="margin: 10px;">
+						<input type="password" placeholder="Password" class="form-control input-sm" name="password" id="password" required />
+					</div>
+					<div class="form-group" style="margin: 10px;">
+						<input type="checkbox" class="checkbox-inline" name="remember" id="remember" value="Remember" />
+						<label for="remember">Keep me logged in</label>
+					</div>
+					<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="logon" id="logon">
+						Sign in
+					</button>
+					<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="logon" id="logon">
+						Forgot Username/Password
+					</button>
+				</form>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+@stop
+
+@section('content')
+
+<div class="row">
+	<div class="col-md-8">
+		<h2>What is EVE Reports?</h2>
+		<p>
+			EVE Reports is a tool that you can use to view and access your Characters' information from anywhere.  EVE Reports
+			currently allows you to view your Character Sheet for any character of an account you add to your profile via the EVE API.
+		</p>
+		<h2>The Future</h2>
+		<p>
+			Eventually, a personal killboard is going to be implemented so that you can view and share your personal kills and losses online.
+			There will also be wallet, asset, mail, and market tracking at some point.
+		</p>
+	</div>
+	<div class="col-md-4">
+		<div class="well">
+			<h3>EVE Server Status</h3>
+			<p>
+				Tranquility: 
+				@if ($serverStatus -> serverOpen)
+					<em class="text-success">Online</em>
+				@else
+					<em class="text-danger">Offline</em>
+				@endif
+			</p>
+			<h3>Player Count</h3>
+			<p>
+				Current Pilots: <em class='text-info'>{{ number_format($serverStatus -> onlinePlayers) }}</em>
+			</p>
 		</div>
-	</body>
-</html>
+	</div>
+</div>
+
+@stop
