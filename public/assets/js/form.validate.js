@@ -1,6 +1,6 @@
 	$('#registration').validate({
 		rules : {
-			user_id : {
+			reg_username : {
 				required : true,
 				minlength : 5
 			},
@@ -30,7 +30,7 @@
 			}
 		},
 		tooltip_options: {
-			user_id : { 
+			reg_username : { 
 				placement : 'top'
 			},
 			email : { 
@@ -47,7 +47,7 @@
 	
 	$('#login').validate({
 		rules : {
-			user_id : {
+			username : {
 				required : true
 			},
 			password : {
@@ -55,7 +55,7 @@
 			}
 		},
 		messages : {
-			user_id : {
+			username : {
 				required : "Please enter your username"
 			},
 			password : {
@@ -63,7 +63,7 @@
 			}
 		},
 		tooltip_options : {
-			user_id : { 
+			username : { 
 				placement: 'top'
 			},
 			password : { 

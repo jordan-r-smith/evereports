@@ -8,3 +8,9 @@ Stack trace:
 [31-Mar-2014 00:10:59 UTC] PHP Fatal error:  main(): Failed opening required 'functions.php' (include_path='/home3/everepor/public_html/school/softdev/evereports/vendor/phpseclib/phpseclib/phpseclib:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/babf55facd1b2ffb2260898aad7747ff on line 2
 [31-Mar-2014 06:04:05 UTC] PHP Fatal error:  Class 'Pheal' not found in /home3/everepor/public_html/school/softdev/evereports/app/controllers/PhealController.php on line 8
 [31-Mar-2014 06:18:36 UTC] PHP Fatal error:  Class 'Navigation' not found in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/1469ec9e0aceb454df8efe7ddf170247 on line 6
+[31-Mar-2014 07:29:54 UTC] PHP Parse error:  syntax error, unexpected ';' in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/1469ec9e0aceb454df8efe7ddf170247 on line 86
+[01-Apr-2014 03:52:39 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ')' in /home3/everepor/public_html/school/softdev/evereports/app/controllers/UsersController.php on line 66
+[01-Apr-2014 04:40:49 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ')' in /home3/everepor/public_html/school/softdev/evereports/app/controllers/UsersController.php on line 66
+[01-Apr-2014 05:10:50 UTC] PHP Parse error:  syntax error, unexpected ')' in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/9e67625638f5b7737b893bcc2bd5ebbc on line 5
+[01-Apr-2014 05:28:53 UTC] PHP Parse error:  syntax error, unexpected ')' in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/9e67625638f5b7737b893bcc2bd5ebbc on line 5
+[01-Apr-2014 05:30:21 UTC] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/9e67625638f5b7737b893bcc2bd5ebbc on line 5
