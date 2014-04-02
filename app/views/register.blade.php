@@ -15,7 +15,7 @@
 	<div class="col-md-5">
 		<div class="well">
 			<h3>Register for an Account!</h3>
-			{{ Form::open(array('action' => 'UsersController@createAccount', 'method' => 'POST', 'id' => 'registration', 'class' => 'form-horizontal', 'role' => 'form')) }}
+			{{ Form::open(array('method' => 'POST', 'id' => 'registration', 'class' => 'form-horizontal', 'role' => 'form')) }}
 				<div class="form-group" style="margin: 10px;">
 					<label for="username">Username: </label>
 					<input type="text" placeholder="Username" class="form-control input-sm" name="reg_username" id="reg_username" required />

@@ -18,7 +18,7 @@
 	<div class="col-md-5">
 		<div class="well">
 			<h3>Add an API key</h3>
-			<form action="" method="post" id="addapi" class="form-horizontal" role="form">
+			{{ Form::open(array('method' => 'POST', 'id' => 'addapi', 'class' => 'form-horizontal', 'role' => 'form')) }}
 				<div class="form-group" style="margin: 10px;">
 					<label for="keyID">Key ID: </label>
 					<input type="text" placeholder="keyID" class="form-control input-sm" name="keyID" id="keyID" required/>
@@ -30,7 +30,7 @@
 				<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="add_api" id="add_api">
 					Add API
 				</button>
-			</form>
+			{{ Form::close() }}
 		</div>
 	</div>
 </div>

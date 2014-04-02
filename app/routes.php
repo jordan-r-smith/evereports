@@ -37,43 +37,66 @@ Route::post('/', array(
 	'uses' => 'UsersController@login'
 ));
 
-# Register - Only accessible to guests
-Route::get('register', function()
+# Guests only
+Route::group(array('before' => 'guest'), function()
 {
-	return View::make('register');
-}) -> before('guest');
-
-# Register - Create account
-Route::post('register', 'UsersController@createAccount');
-
-# Logout - Only accessible to registered users
-Route::get('logout', array(
-	'as' => 'logout',
-	'uses' => 'UsersController@logout'
-)) -> before('auth');
-
-# API - Only accessible to registered users
-Route::get('api', array(
-	'as' => 'api',
-	function()
+	# Register
+	Route::get('register', function()
 	{
-		return View::make('api');
-	}
+		return View::make('register');
+	});
 
-)) -> before('auth');
+	# Register - Create account
+	Route::post('register', 'UsersController@createAccount');
 
-# API - Add API key
-Route::post('api', 'APIKeyController@addAPIKey');
+});
 
-# Characters - Only accessible to registered users
-Route::get('characters', 'APIKeyController@getAPIKeys') -> before('auth');
+# Registered users only
+Route::group(array('before' => 'auth'), function()
+{
+	# Logout
+	Route::get('logout', array(
+		'as' => 'logout',
+		'uses' => 'UsersController@logout'
+	));
 
-# Account - Only accessible to registered users
-Route::get('account', array(
-	'as' => 'account',
-	function()
-	{
-		return View::make('account');
-	}
+	# API - View
+	Route::get('api', array(
+		'as' => 'api',
+		function()
+		{
+			return View::make('api');
+		}
 
-)) -> before('auth');
+	));
+	
+	# API - Add API key to database
+	Route::post('api', 'APIKeyController@addAPIKey');
+
+	# Characters - Generate API/character list
+	Route::get('characters', array(
+		'as' => 'characters',
+		'uses' => 'APIKeyController@getAPIKeys'
+	));
+
+	# Characters - Delete API key from database
+	Route::get('characters/remove/{keyID}', array(
+		'as' => 'removeAPI',
+		'uses' => 'APIKeyController@removeAPIKey'
+	));
+	
+	# Characters - Display character
+	Route::get('characters/{keyID}/{charID}', '');
+
+	# Account - View
+	Route::get('account', array(
+		'as' => 'account',
+		function()
+		{
+			return View::make('account');
+		}
+
+	));
+});
+
+

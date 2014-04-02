@@ -27,8 +27,8 @@ class PhealController extends BaseController
 			$api_request = new Pheal($keyID, $vCode, 'account');
 			$api_request -> detectAccess();
 			$char_list = $api_request -> Characters();
+			$char_list = $char_list -> characters;
 			
-			//return View::make('characters', array('characterList' => $char_list));
 			return $char_list;
 		} catch (\Pheal\Exceptions\PhealException $e)
 		{
