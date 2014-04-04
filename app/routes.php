@@ -25,6 +25,12 @@ HTML::macro('navLink', function($route, $text)
 	return '<li ' . $active . '>' . link_to($route, $text) . '</li>';
 });
 
+# User model
+Route::model('user', 'User');
+
+# APIKey model
+Route::model('apiKey', 'APIKey');
+
 # Home - Uses Pheal library
 Route::get('/', array(
 	'as' => 'home',
@@ -69,7 +75,7 @@ Route::group(array('before' => 'auth'), function()
 		}
 
 	));
-	
+
 	# API - Add API key to database
 	Route::post('api', 'APIKeyController@addAPIKey');
 
@@ -84,7 +90,7 @@ Route::group(array('before' => 'auth'), function()
 		'as' => 'removeAPI',
 		'uses' => 'APIKeyController@removeAPIKey'
 	));
-	
+
 	# Characters - Display character
 	Route::get('characters/{keyID}/{charID}', '');
 
@@ -98,5 +104,3 @@ Route::group(array('before' => 'auth'), function()
 
 	));
 });
-
-

@@ -8,7 +8,8 @@ class UsersController extends BaseController
 			'username' => Input::get('username'),
 			'password' => Input::get('password')
 		);
-		if (Auth::attempt($user_data))
+		
+		if (Auth::attempt($user_data, Input::has('remember')))
 		{
 			return Redirect::route('home') -> with(array(
 				'alert' => 'You are successfully logged in.',

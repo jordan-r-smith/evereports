@@ -49,20 +49,33 @@ class APIKeyController extends BaseController
 
 	public function removeAPIKey($keyID)
 	{
+		$username = Auth::user() -> username;
+		$userDB = '';
 		try
 		{
-			$key = APIKey::where('keyID', $keyID) -> delete();
+			$userDB = APIKey::select('username') -> where('keyID', $keyID, 'AND') -> where('username', $username) -> first();
+			$key = APIKey::where('keyID', $keyID, 'AND') -> where('username', $username) -> delete();
 		} catch (\Illuminate\Database\QueryException $e)
 		{
 			return Redirect::route('characters') -> with(array(
-				'alert' => 'Error: Fail to remove API key from the server. Please contact support.',
+				'alert' => 'Error: Failed to remove API key from the server. Please contact support.',
 				'alert-class' => 'alert-danger'
 			));
 		}
-		return Redirect::route('characters') -> with(array(
-			'alert' => 'You have successfully removed an API Key.',
-			'alert-class' => 'alert-success'
-		));
+		
+		if (!empty($userDB->username))
+		{
+			return Redirect::route('characters') -> with(array(
+				'alert' => 'You have successfully removed an API Key.',
+				'alert-class' => 'alert-success'
+			));
+		} else
+		{
+			return Redirect::route('characters') -> with(array(
+				'alert' => 'Error: You are attemping to remove an API key that does not belong to you!',
+				'alert-class' => 'alert-danger'
+			));
+		}
 
 	}
 

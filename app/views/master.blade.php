@@ -56,7 +56,7 @@
 										<input type="password" placeholder="Password" class="form-control input-sm" name="password" id="password" required />
 									</div>
 									<div class="form-group" style="margin: 10px;">
-										<input type="checkbox" class="checkbox-inline" name="remember" id="remember" value="Remember" />
+										<input type="checkbox" class="checkbox-inline" name="remember" id="remember" value="remember" />
 										<label for="remember">Keep me logged in</label>
 									</div>
 									<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="logon" id="logon">
