@@ -26,7 +26,7 @@
 			<ul class="characterList panel-body text-center">
 				@foreach($apiKey -> charList as $character)
 				<li>
-					<a href='/characters/{{ $apiKey -> keyID }}/{{ $character -> characterID }}' role='button' class='thumbnail' data-toggle='tooltip' title='{{ $character -> name }}'>
+					<a href='/characters/{{ $apiKey -> keyID }}/{{ $character -> name }}' role='button' class='thumbnail' data-toggle='tooltip' title='{{ $character -> name }}'>
 						<img src='http://image.eveonline.com/Character/{{ $character -> characterID }}_128.jpg' alt='{{ $character -> name }}' />
 					</a>
 				</li>

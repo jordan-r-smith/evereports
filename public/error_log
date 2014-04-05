@@ -43,3 +43,12 @@ Stack trace:
 [02-Apr-2014 00:26:30 UTC] PHP Fatal error:  Call to undefined function actionLink() in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/7b25b49c9580cfba45497aa6376ddb9a on line 14
 [02-Apr-2014 02:08:49 UTC] PHP Fatal error:  Call to undefined method Illuminate\Database\Eloquent\Collection::delete() in /home3/everepor/public_html/school/softdev/evereports/app/controllers/APIKeyController.php on line 55
 [02-Apr-2014 02:09:26 UTC] PHP Fatal error:  Call to undefined method Illuminate\Database\Eloquent\Collection::delete() in /home3/everepor/public_html/school/softdev/evereports/app/controllers/APIKeyController.php on line 55
+[05-Apr-2014 03:34:18 UTC] PHP Fatal error:  Call to undefined function getCharID() in /home3/everepor/public_html/school/softdev/evereports/app/controllers/PhealController.php on line 143
+[05-Apr-2014 03:34:56 UTC] PHP Fatal error:  Call to undefined function charSheet() in /home3/everepor/public_html/school/softdev/evereports/app/controllers/PhealController.php on line 145
+[05-Apr-2014 06:12:34 UTC] PHP Fatal error:  Call to undefined function getDb() in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/a0ed4c170f84be6725c64f560c55d7d0 on line 10
+[05-Apr-2014 06:13:18 UTC] PHP Fatal error:  Call to undefined function getDb() in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/a0ed4c170f84be6725c64f560c55d7d0 on line 10
+[05-Apr-2014 06:13:23 UTC] PHP Fatal error:  Call to undefined function getDb() in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/a0ed4c170f84be6725c64f560c55d7d0 on line 10
+[05-Apr-2014 06:39:37 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/a0ed4c170f84be6725c64f560c55d7d0 on line 20
+[05-Apr-2014 06:43:26 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/a0ed4c170f84be6725c64f560c55d7d0 on line 29
+[05-Apr-2014 06:44:01 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/a0ed4c170f84be6725c64f560c55d7d0 on line 48
+[05-Apr-2014 06:54:14 UTC] PHP Fatal error:  Call to undefined function assets() in /home3/everepor/public_html/school/softdev/evereports/app/storage/views/a0ed4c170f84be6725c64f560c55d7d0 on line 68

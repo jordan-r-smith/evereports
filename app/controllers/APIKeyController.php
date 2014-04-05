@@ -51,6 +51,7 @@ class APIKeyController extends BaseController
 	{
 		$username = Auth::user() -> username;
 		$userDB = '';
+
 		try
 		{
 			$userDB = APIKey::select('username') -> where('keyID', $keyID, 'AND') -> where('username', $username) -> first();
@@ -62,8 +63,8 @@ class APIKeyController extends BaseController
 				'alert-class' => 'alert-danger'
 			));
 		}
-		
-		if (!empty($userDB->username))
+
+		if (!empty($userDB -> username))
 		{
 			return Redirect::route('characters') -> with(array(
 				'alert' => 'You have successfully removed an API Key.',
@@ -79,18 +80,32 @@ class APIKeyController extends BaseController
 
 	}
 
-	public function getAPIKeys()
+	public function listAPIKeys()
 	{
 		$username = Auth::user() -> username;
 		$keys = APIKey::select('keyID', 'vCode') -> where('username', $username) -> get();
 
 		foreach ($keys as $key)
 		{
-			$charList = PhealController::characterList($key);
+			$charList = PhealController::charList($key);
 			$key -> charList = $charList;
 		}
 
 		return View::make('characters', array('apiKeys' => $keys));
+	}
+
+	public static function getAPIKey($keyID)
+	{
+		try
+		{
+			$username = Auth::user() -> username;
+			$apiKey = APIKey::where('keyID', $keyID, 'AND') -> where('username', $username) -> first();
+
+			return $apiKey;
+		} catch (\Illuminate\Database\QueryException $e)
+		{
+			echo 'Error: get API key';
+		}
 	}
 
 }

@@ -82,7 +82,7 @@ Route::group(array('before' => 'auth'), function()
 	# Characters - Generate API/character list
 	Route::get('characters', array(
 		'as' => 'characters',
-		'uses' => 'APIKeyController@getAPIKeys'
+		'uses' => 'APIKeyController@listAPIKeys'
 	));
 
 	# Characters - Delete API key from database
@@ -92,7 +92,7 @@ Route::group(array('before' => 'auth'), function()
 	));
 
 	# Characters - Display character
-	Route::get('characters/{keyID}/{charID}', '');
+	Route::get('characters/{keyID}/{charName}', 'PhealController@displayChar');
 
 	# Account - View
 	Route::get('account', array(

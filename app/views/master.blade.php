@@ -87,7 +87,9 @@
 		<div class="jumbotron">
 			<div class="container">
 				<header>
-					<a href="/"><img src="assets/img/banner.jpg" class="img-responsive" alt="EVE Reports" /></a>
+					<a href="/">
+						<img src="{{ asset('assets/img/banner.jpg') }}" class="img-responsive" alt="EVE Reports" />
+					</a>
 				</header>
 			</div>
 		</div>
@@ -107,11 +109,11 @@
 			</footer>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/jquery.validate.min.js"></script>
-		<script src="assets/js/jquery-validate.bootstrap-tooltip.min.js"></script>
-		<script src="assets/js/form.validate.js"></script>
-		<script src="assets/js/collapse.js"></script>
+		<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery.validate.min.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery-validate.bootstrap-tooltip.min.js') }}"></script>
+		<script src="{{ asset('assets/js/form.validate.js') }}"></script>
+		<script src="{{ asset('assets/js/collapse.js') }}"></script>
 		<script type="text/javascript">
 			$('[data-toggle="tooltip"]').tooltip({
 				'placement' : 'bottom'
