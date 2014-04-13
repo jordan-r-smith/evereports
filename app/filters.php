@@ -36,7 +36,7 @@ Route::filter('auth', function()
 {
 	if (Auth::guest())
 		return Redirect::route('home') -> with(array(
-			'alert' => 'You must be logged in to view that page.',
+			'alert-message' => 'You must be logged in to view that page.',
 			'alert-class' => 'alert-warning'
 		));
 });
@@ -61,7 +61,7 @@ Route::filter('guest', function()
 {
 	if (Auth::check())
 		return Redirect::route('home') -> with(array(
-			'alert' => 'You are already logged in!',
+			'alert-message' => 'You are already logged in!',
 			'alert-class' => 'alert-warning'
 		));
 });

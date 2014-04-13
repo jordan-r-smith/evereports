@@ -6,10 +6,7 @@
 	<div class="col-md-7">
 		<h2>Why should you register?</h2>
 		<p>
-			The API key is a private code that identifies your account. Combined with your user ID, this key allows
-			third party programs and web sites to access information about your characters and corporations. Using
-			this data, such utilities can improve your EVE experience by providing useful functionality such as wallet
-			exports, skill training notifications, and other tools.
+			fix me!!!
 		</p>
 	</div>
 	<div class="col-md-5">

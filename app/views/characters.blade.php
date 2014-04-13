@@ -10,7 +10,7 @@
 				<div class="dropdown pull-right">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-wrench"></span> </a>
 					<ul class="dropdown-menu" role="menu">
-						<li>
+						<li class="disabled">
 							<a href="">Manage</a>
 						</li>
 						<li>

@@ -62,7 +62,7 @@
 									<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="logon" id="logon">
 										Sign in
 									</button>
-									<button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="logon" id="logon">
+									<button type="submit" class="btn btn-default btn-sm disabled" style="margin: 5px;" name="logon" id="logon">
 										Forgot Username/Password
 									</button>
 									{{ Form::close() }}
@@ -71,8 +71,8 @@
 							@elseif(Auth::check())
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li>
-									{{ link_to_route('account', 'Account') }}
+								<li class="disabled">
+									<a href="">Account</a> {{-- link_to_route('account', 'Account') --}}
 								</li>
 								<li>
 									{{ link_to_route('logout', 'Logout') }}
@@ -87,17 +87,17 @@
 		<div class="jumbotron">
 			<div class="container">
 				<header>
-					<a href="/">
-						<img src="{{ asset('assets/img/banner.jpg') }}" class="img-responsive" alt="EVE Reports" />
-					</a>
+					<a href="/"> <img src="{{ asset('assets/img/banner.jpg') }}" class="img-responsive" alt="EVE Reports" /> </a>
 				</header>
 			</div>
 		</div>
 		<div class="container">
-			@if(Session::has('alert'))
+			@if(Session::has('alert-message'))
 			<div class="alert alert-dismissable {{ Session::get('alert-class') }}">
-				<button type="button" class="close" data-dismiss="alert">×</button>
-				{{ Session::get('alert') }}
+				<button type="button" class="close" data-dismiss="alert">
+					×
+				</button>
+				{{ Session::get('alert-message') }}
 			</div>
 			@endif
 			@yield('content')
@@ -117,7 +117,11 @@
 		<script type="text/javascript">
 			$('[data-toggle="tooltip"]').tooltip({
 				'placement' : 'bottom'
-			});	
+			});
+
+			$(".alert-dismissable").delay(5000).fadeOut("slow", function() {
+				$(this).remove();
+			});
 		</script>
 		@include('confirm_delete')
 	</body>

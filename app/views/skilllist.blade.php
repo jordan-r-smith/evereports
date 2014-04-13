@@ -1,59 +1,56 @@
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<div class="label label-default" id="collapse-init">
-			Expand all groups <span class="glyphicon glyphicon-resize-small"></span>
+		Expand all groups <span class="glyphicon glyphicon-resize-small"></span>
 		</div>
 		<div class="panel-group" id="accordion">
 			<?php
 			# Select list of skill groups from database
-			try
-			{
+			try {
 				$groupList = DB::table('invGroups') -> select('groupName', 'groupID') -> where('categoryID', 16) -> get();
 				asort($groupList);
-			} catch (PDOException $e)
-			{
+			} catch (PDOException $e) {
 				echo "Error: invGroups";
 			}
-			
-			# Create a table of the character's skills for each skill group
+			 # Create a table of the character's skills for each skill group 
 			?>
 			@foreach ($groupList as $group)
 				<?php
 				# Select list of skills that apply to a group
-				try
-				{
+				try {
 					$skillList = DB::table('invTypes') -> select('typeID', 'groupID', 'typeName') -> where('groupID', $group -> groupID) -> get();
 					asort($skillList);
-				} catch (PDOException $e)
-				{
+				} catch (PDOException $e) {
 					echo $e;
 				}
 
 				# Create an associate array with all relavent information
 				$skillsInGroup = array();
-				foreach ($skillList as $groupSkill)
-				{
-					$groupTypeID = $groupSkill -> typeID;
-					$groupTypeName = $groupSkill -> typeName;
-					foreach ($skills as $skill)
-					{
-						$typeID = $skill['typeID'];
-						$skillPoints = $skill['skillpoints'];
-						$skillLevel = $skill['level'];
-						if ($typeID == $groupTypeID)
-						{
-							$tempSkill = array(
-								'typeName' => $groupTypeName,
-								'skillPoints' => $skillPoints,
-								'skillLevel' => $skillLevel
-							);
-							array_push($skillsInGroup, $tempSkill);
-						}
-					}
-				}
-
-				# Display groups with available skills
 				?>
+				@foreach ($skillList as $groupSkill)
+				<?php
+				$groupTypeID = $groupSkill -> typeID;
+				$groupTypeName = $groupSkill -> typeName;
+				?>
+					@foreach ($skills as $skill)
+					<?php
+					$typeID = $skill['typeID'];
+					$skillPoints = $skill['skillpoints'];
+					$skillLevel = $skill['level'];
+					?>
+						@if ($typeID == $groupTypeID)
+						<?php
+						$tempSkill = array(
+							'typeName' => $groupTypeName,
+							'skillPoints' => $skillPoints,
+							'skillLevel' => $skillLevel
+						);
+						array_push($skillsInGroup, $tempSkill);
+						?>
+						@endif
+					@endforeach
+				@endforeach
+
 				@if (!empty($skillsInGroup))
 					<div class="panel panel-primary">
 						<div class="panel-heading" data-toggle="collapse" data-target="#collapse{{ str_replace(' ', '', $group -> groupName) }}">

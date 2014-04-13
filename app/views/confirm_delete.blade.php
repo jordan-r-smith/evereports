@@ -6,11 +6,11 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
 				</button>
-				<h4 class="modal-title">Delete Parmanently</h4>
+				<h4 class="modal-title">Remove API key</h4>
 			</div>
 			<div class="modal-body">
 				<p>
-					Are you sure about this ?
+					Are you sure you want to remove this API key?
 				</p>
 			</div>
 			<div class="modal-footer">
@@ -18,7 +18,7 @@
 					Cancel
 				</button>
 				<button type="button" class="btn btn-danger" id="confirm">
-					Delete
+					Remove
 				</button>
 			</div>
 		</div>
