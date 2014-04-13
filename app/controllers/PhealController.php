@@ -132,15 +132,38 @@ class PhealController extends BaseController
 			echo "Error: charID";
 		}
 	}
+	
+	public function skillQueue($apiKey, $charID)
+	{
+		$keyID = $apiKey -> keyID;
+		$vCode = $apiKey -> vCode;
+
+		try
+		{
+			$charRequest = new Pheal($keyID, $vCode, 'char');
+			$charRequest -> detectAccess();
+
+			$arguments = array('characterID' => $charID);
+			$queueRequest = $charRequest -> SkillQueue($arguments);
+
+			$skillQueue = $queueRequest -> skillqueue -> toArray();
+
+			return $skillQueue;
+		} catch (\Pheal\Exceptions\PhealException $e)
+		{
+			echo "Error: skills";
+		}
+	}
 
 	public function displayChar($keyID, $charName)
 	{
 		$apiKey = APIKeyController::getAPIKey($keyID);
-		$charID = PhealController::getCharID($apiKey, $charName);
+		$charID = $this->getCharID($apiKey, $charName);
 
-		$charSheet = PhealController::charSheet($apiKey, $charID);
-		$skills = PhealController::skills($apiKey, $charID);
-		$charInfo = PhealController::charInfo($apiKey, $charID);
+		$charSheet = $this->charSheet($apiKey, $charID);
+		$skills = $this->skills($apiKey, $charID);
+		$charInfo = $this->charInfo($apiKey, $charID);
+		$skillQueue = $this->skillQueue($apiKey, $charID);
 		
 		$totalSP = 0;
 
@@ -154,7 +177,8 @@ class PhealController extends BaseController
 			'charSheet' => $charSheet,
 			'skills' => $skills,
 			'totalSP' => $totalSP,
-			'charInfo' => $charInfo
+			'charInfo' => $charInfo,
+			'skillQueue' => $skillQueue
 		));
 	}
 
