@@ -103,4 +103,7 @@ Route::group(array('before' => 'auth'), function()
 		}
 
 	));
+  
+  # Account - Update account information
+  Route::post('account', 'UsersController@saveAccount');
 });

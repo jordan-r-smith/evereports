@@ -6,7 +6,9 @@
 	<div class="col-md-7">
 		<h2>Why should you register?</h2>
 		<p>
-			fix me!!!
+			You will be able to view your basic character information.  Your skill list will be displayed along with your current skill queue in a nice format.
+			You will not only be able to add an API for a single account, but you can add an API for as many accounts as you wish.  
+			Eventually we will add support for Mail, Assets, and a personal Killboard for each of your characters.
 		</p>
 	</div>
 	<div class="col-md-5">
