@@ -15,8 +15,6 @@ Profile Viewer/Tool for EVE Online
 
 ## To-do
 
-- API access exceptions
-- Account management
 - API management
 - Documentation
 
