@@ -4,13 +4,13 @@
     <title>EVE Reports</title>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Jordan Smith">
 
     {{ HTML::style('assets/css/custom.style.css') }}
     {{ HTML::style('assets/css/darkly.min.css') }}
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.ico') }}" />
   </head>
   <body>
     <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -22,30 +22,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="">EVE Reports</a>
+          <a class="navbar-brand" href="">
+            EVE Reports</a>
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li>
-              {{ HTML::navLink("/", 'Home') }}
-            </li>
+            {{ HTML::navLink("/", 'Home') }}
             @if(Auth::guest())
-            <li>
-              {{ HTML::navLink("register", 'Register') }}
-            </li>
+            {{ HTML::navLink("register", 'Register') }}
             @elseif(Auth::check())
-            <li>
-              {{ HTML::navLink("api", 'Add API') }}
-            </li>
-            <li>
-              {{ HTML::navLink("characters", 'Characters') }}
-            </li>
+            {{ HTML::navLink("api", 'Add API') }}
+            {{ HTML::navLink("characters", 'Characters') }}
             @endif
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               @if(Auth::guest())
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Log in <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Log in <b class="caret"></b></a>
               <ul class="dropdown-menu" style="padding: 10px; min-width: 300px; background-color: #375a7f;">
                 <li>
                   {{ Form::open(array('action' => 'UsersController@login', 'method' => 'POST', 'id' => 'login', 'class' => 'form-horizontal', 'role' => 'form')) }}
@@ -62,14 +56,12 @@
                   <button type="submit" class="btn btn-default btn-sm" style="margin: 5px;" name="logon" id="logon">
                     Sign in
                   </button>
-                  <button type="submit" class="btn btn-default btn-sm disabled" style="margin: 5px;" name="logon" id="logon">
-                    Forgot Username/Password
-                  </button>
                   {{ Form::close() }}
                 </li>
               </ul>
               @elseif(Auth::check())
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user() -> username }} <span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {{ Auth::user() -> username }} <span class="glyphicon glyphicon-user"></span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li>
                   {{ HTML::linkRoute('account', 'Account') }}
@@ -87,7 +79,9 @@
     <div class="jumbotron">
       <div class="container">
         <header>
-          <a href="/"> <img src="{{ asset('assets/img/banner.jpg') }}" class="img-responsive" alt="EVE Reports" /> </a>
+          <a href="/">
+            <img src="{{ asset('assets/img/banner.jpg') }}" class="img-responsive" alt="EVE Reports" />
+          </a>
         </header>
       </div>
     </div>
@@ -113,16 +107,11 @@
     <script src="{{ asset('assets/js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery-validate.bootstrap-tooltip.min.js') }}"></script>
     <script src="{{ asset('assets/js/form.validate.js') }}"></script>
-    <script src="{{ asset('assets/js/collapse.js') }}"></script>
     <script type="text/javascript">
-      $('[data-toggle="tooltip"]').tooltip({
-        'placement' : 'bottom'
-      });
-
       $(".alert-dismissable").delay(5000).fadeOut("slow", function() {
         $(this).remove();
       });
     </script>
-    @include('confirm_delete')
+    @yield('other_includes')
   </body>
 </html>

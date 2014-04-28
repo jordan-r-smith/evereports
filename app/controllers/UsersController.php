@@ -1,6 +1,12 @@
 <?php
 
+/*
+ * Controller for users
+ * 
+ */
 class UsersController extends BaseController {
+  
+  // Login a user
   public function login() {
     $user_data = array(
       'username' => Input::get('username'),
@@ -19,6 +25,7 @@ class UsersController extends BaseController {
     )) -> withInput();
   }
 
+  // Logout a user
   public function logout() {
     Auth::logout();
     return Redirect::route('home') -> with(array(
@@ -27,15 +34,16 @@ class UsersController extends BaseController {
     ));
   }
 
-  public function createAccount() {
+  // Register a new user
+  public function create() {
     $username = Input::get('reg_username');
     $email = Input::get('email');
     $password = Input::get('reg_password');
     $confirm_password = Input::get('confirm_password');
 
+    // Make sure that both passwords are identical
     if (strcmp($password, $confirm_password) == 0) {
       $hashed_password = Hash::make($password);
-
       try {
         $user = new User;
         $user -> username = $username;
@@ -49,6 +57,7 @@ class UsersController extends BaseController {
         ));
       }
 
+      // Login the new user automatically
       $user = User::where('username', '=', $username) -> first();
       Auth::login($user);
 
@@ -64,12 +73,14 @@ class UsersController extends BaseController {
     ));
   }
 
-  public function saveAccount() {
+  // Update account information
+  public function save() {
     $user = Auth::user();
     $email = Input::get('email');
     $password = Input::get('password');
     $confirm_password = Input::get('confirm_password');
 
+    // Only update the password if the fields are not empty
     if (!empty($password)) {
       if (strcmp($password, $confirm_password) == 0) {
         $hashed_password = Hash::make($password);

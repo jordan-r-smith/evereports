@@ -6,180 +6,158 @@ use Pheal\Core\Config;
 Config::getInstance() -> cache = new \Pheal\Cache\FileStorage('cache/');
 Config::getInstance() -> access = new \Pheal\Access\StaticCheck();
 
-class PhealController extends BaseController
-{
+class PhealController extends BaseController {
 
-	public function serverStatus()
-	{
-		$api_request = new Pheal();
-		$response = $api_request -> serverScope -> ServerStatus();
+  public function serverStatus() {
+    $api_request = new Pheal();
+    $response = $api_request -> serverScope -> ServerStatus();
 
-		return View::make('home', array('serverStatus' => $response));
-	}
+    return View::make('home', array('serverStatus' => $response));
+  }
 
-	public static function charList($apiKey)
-	{
-		$keyID = $apiKey -> keyID;
-		$vCode = $apiKey -> vCode;
+  public static function charList($apiKey) {
+    $keyID = $apiKey -> keyID;
+    $vCode = $apiKey -> vCode;
 
-		try
-		{
-			$api_request = new Pheal($keyID, $vCode, 'account');
-			$api_request -> detectAccess();
-			$char_list = $api_request -> Characters();
-			$char_list = $char_list -> characters;
+    try {
+      $api_request = new Pheal($keyID, $vCode, 'account');
+      $api_request -> detectAccess();
+      $char_list = $api_request -> Characters();
+      $char_list = $char_list -> characters;
 
-			return $char_list;
-		} catch (\Pheal\Exceptions\PhealException $e)
-		{
-			echo "Error: charList";
-		}
-	}
+      return $char_list;
+    } catch (\Pheal\Exceptions\PhealException $e) {
+      return "Account: No Access";
+    }
+  }
 
-	public function charSheet($apiKey, $charID)
-	{
-		$keyID = $apiKey -> keyID;
-		$vCode = $apiKey -> vCode;
+  public function charSheet($apiKey, $charID) {
+    $keyID = $apiKey -> keyID;
+    $vCode = $apiKey -> vCode;
 
-		try
-		{
-			$charRequest = new Pheal($keyID, $vCode, 'char');
-			$charRequest -> detectAccess();
+    try {
+      $charRequest = new Pheal($keyID, $vCode, 'char');
+      $charRequest -> detectAccess();
 
-			$arguments = array('characterID' => $charID);
-			$char_sheet = $charRequest -> CharacterSheet($arguments);
+      $arguments = array('characterID' => $charID);
+      $char_sheet = $charRequest -> CharacterSheet($arguments);
 
-			$charSheetData = $char_sheet -> toArray();
-			if (isset($charSheetData['result']))
-			{
-				$charSheetData = $charSheetData['result'];
-			}
+      $charSheetData = $char_sheet -> toArray();
+      if (isset($charSheetData['result'])) {
+        $charSheetData = $charSheetData['result'];
+      }
 
-			return $charSheetData;
-		} catch (\Pheal\Exceptions\PhealException $e)
-		{
-			echo "Error: charSheet";
-		}
-	}
+      return $charSheetData;
+    } catch (\Pheal\Exceptions\PhealException $e) {
+      return "CharacterSheet: No Access";
+    }
+  }
 
-	public function skills($apiKey, $charID)
-	{
-		$keyID = $apiKey -> keyID;
-		$vCode = $apiKey -> vCode;
+  public function skills($apiKey, $charID) {
+    $keyID = $apiKey -> keyID;
+    $vCode = $apiKey -> vCode;
 
-		try
-		{
-			$charRequest = new Pheal($keyID, $vCode, 'char');
-			$charRequest -> detectAccess();
+    try {
+      $charRequest = new Pheal($keyID, $vCode, 'char');
+      $charRequest -> detectAccess();
 
-			$arguments = array('characterID' => $charID);
-			$char_sheet = $charRequest -> CharacterSheet($arguments);
+      $arguments = array('characterID' => $charID);
+      $char_sheet = $charRequest -> CharacterSheet($arguments);
 
-			$skills = $char_sheet -> skills -> toArray();
+      $skills = $char_sheet -> skills -> toArray();
 
-			return $skills;
-		} catch (\Pheal\Exceptions\PhealException $e)
-		{
-			echo "Error: skills";
-		}
-	}
+      return $skills;
+    } catch (\Pheal\Exceptions\PhealException $e) {
+      return "CharacterSheet: No Access";
+    }
+  }
 
-	public function charInfo($apiKey, $charID)
-	{
-		$keyID = $apiKey -> keyID;
-		$vCode = $apiKey -> vCode;
+  public function charInfo($apiKey, $charID) {
+    $keyID = $apiKey -> keyID;
+    $vCode = $apiKey -> vCode;
 
-		try
-		{
-			# CharacterInfo API Function
-			$eveRequest = new Pheal($keyID, $vCode, 'eve');
-			$eveRequest -> detectAccess();
+    try {
+      # CharacterInfo API Function
+      $eveRequest = new Pheal($keyID, $vCode, 'eve');
+      $eveRequest -> detectAccess();
 
-			$arguments = array('characterID' => $charID);
-			$char_info = $eveRequest -> CharacterInfo($arguments);
+      $arguments = array('characterID' => $charID);
+      $char_info = $eveRequest -> CharacterInfo($arguments);
 
-			$charInfoData = $char_info -> toArray();
-			if (isset($charInfoData['result']))
-			{
-				$charInfoData = $charInfoData['result'];
-			}
+      $charInfoData = $char_info -> toArray();
+      if (isset($charInfoData['result'])) {
+        $charInfoData = $charInfoData['result'];
+      }
 
-			return $charInfoData;
-		} catch (\Pheal\Exceptions\PhealException $e)
-		{
-			echo "Error: charInfo";
-		}
-	}
+      return $charInfoData;
+    } catch (\Pheal\Exceptions\PhealException $e) {
+      return "CharacterInfo (Private): No Access";
+    }
+  }
 
-	public function getCharID($apiKey, $charName)
-	{
-		$keyID = $apiKey -> keyID;
-		$vCode = $apiKey -> vCode;
+  public function getCharID($apiKey, $charName) {
+    $keyID = $apiKey -> keyID;
+    $vCode = $apiKey -> vCode;
 
-		try
-		{
-			$eveRequest = new Pheal($keyID, $vCode, 'eve');
-			$eveRequest -> detectAccess();
+    try {
+      $eveRequest = new Pheal($keyID, $vCode, 'eve');
+      $eveRequest -> detectAccess();
 
-			$arguments = array('names' => $charName);
-			$char_info = $eveRequest -> CharacterID($arguments);
+      $arguments = array('names' => $charName);
+      $char_info = $eveRequest -> CharacterID($arguments);
 
-			$charID = $char_info -> characters[0] -> characterID;
+      $charID = $char_info -> characters[0] -> characterID;
 
-			return $charID;
-		} catch (\Pheal\Exceptions\PhealException $e)
-		{
-			echo "Error: charID";
-		}
-	}
-	
-	public function skillQueue($apiKey, $charID)
-	{
-		$keyID = $apiKey -> keyID;
-		$vCode = $apiKey -> vCode;
+      return $charID;
+    } catch (\Pheal\Exceptions\PhealException $e) {
+      return "CharacterID: No Access";
+    }
+  }
 
-		try
-		{
-			$charRequest = new Pheal($keyID, $vCode, 'char');
-			$charRequest -> detectAccess();
+  public function skillQueue($apiKey, $charID) {
+    $keyID = $apiKey -> keyID;
+    $vCode = $apiKey -> vCode;
 
-			$arguments = array('characterID' => $charID);
-			$queueRequest = $charRequest -> SkillQueue($arguments);
+    try {
+      $charRequest = new Pheal($keyID, $vCode, 'char');
+      $charRequest -> detectAccess();
 
-			$skillQueue = $queueRequest -> skillqueue -> toArray();
+      $arguments = array('characterID' => $charID);
+      $queueRequest = $charRequest -> SkillQueue($arguments);
 
-			return $skillQueue;
-		} catch (\Pheal\Exceptions\PhealException $e)
-		{
-			echo "Error: skills";
-		}
-	}
+      $skillQueue = $queueRequest -> skillqueue -> toArray();
 
-	public function displayChar($keyID, $charName)
-	{
-		$apiKey = APIKeyController::getAPIKey($keyID);
-		$charID = $this->getCharID($apiKey, $charName);
+      return $skillQueue;
+    } catch (\Pheal\Exceptions\PhealException $e) {
+      return "SkillQueue: No Access";
+    }
+  }
 
-		$charSheet = $this->charSheet($apiKey, $charID);
-		$skills = $this->skills($apiKey, $charID);
-		$charInfo = $this->charInfo($apiKey, $charID);
-		$skillQueue = $this->skillQueue($apiKey, $charID);
-		
-		$totalSP = 0;
+  public function displayChar($keyID, $charName) {
+    $apiKey = APIKeyController::getKey($keyID);
+    $charID = $this -> getCharID($apiKey, $charName);
 
-		foreach ($skills as $skill)
-		{
-			$skillPoints = $skill['skillpoints'];
-			$totalSP = $totalSP + $skillPoints;
-		}
+    $charSheet = $this -> charSheet($apiKey, $charID);
+    $skills = $this -> skills($apiKey, $charID);
+    $charInfo = $this -> charInfo($apiKey, $charID);
+    $skillQueue = $this -> skillQueue($apiKey, $charID);
 
-		return View::make('display', array(
-			'charSheet' => $charSheet,
-			'skills' => $skills,
-			'totalSP' => $totalSP,
-			'charInfo' => $charInfo,
-			'skillQueue' => $skillQueue
-		));
-	}
+    $totalSP = 0;
+
+    if (gettype($skills) != "string") {
+      foreach ($skills as $skill) {
+        $skillPoints = $skill['skillpoints'];
+        $totalSP = $totalSP + $skillPoints;
+      }
+    }
+
+    return View::make('characters.display', array(
+      'charSheet' => $charSheet,
+      'skills' => $skills,
+      'totalSP' => $totalSP,
+      'charInfo' => $charInfo,
+      'skillQueue' => $skillQueue
+    ));
+  }
 
 }

@@ -64,8 +64,8 @@
 									@foreach ($skillsInGroup as $skill)
 										<tr>
 											<td>{{ $skill['typeName'] }}</td>
-											<td width="150px"><em>{{ number_format($skill['skillPoints']) }} SP</em></td>
-											<td align="right" width="100px"><img src="{{ asset('assets/img/level' . $skill['skillLevel'] . '.jpg') }}" /></td>
+											<td style="width: 150px"><em>{{ number_format($skill['skillPoints']) }} SP</em></td>
+											<td style="text-align: right; width: 100px"><img src="{{ asset('assets/img/level' . $skill['skillLevel'] . '.jpg') }}" alt="Level: {{ $skill['skillLevel'] }}" /></td>
 										</tr>
 									@endforeach
 								</table>

@@ -10,11 +10,8 @@
 				<div class="dropdown pull-right">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-wrench"></span> </a>
 					<ul class="dropdown-menu" role="menu">
-						<li class="disabled">
-							<a href="">Manage</a>
-						</li>
 						<li>
-							<a href="" id="delete"
+							<a href=""
 							data-toggle="modal"
 							data-target="#confirmDelete"
 							data-url="/characters/remove/{{ $apiKey -> keyID }}">Delete</a>
@@ -36,10 +33,16 @@
 	</div>
 	@endforeach
 </div>
+
+@stop
+
+@section('other_includes')
+
 <script type="text/javascript">
-	$('[data-toggle="tooltip"]').tooltip({
-		'placement' : 'bottom'
-	}); 
+  $('[data-toggle="tooltip"]').tooltip({
+    'placement' : 'bottom'
+  }); 
 </script>
+@include('characters.confirm_delete')
 
 @stop
